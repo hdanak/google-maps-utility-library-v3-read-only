@@ -597,7 +597,9 @@ RichMarker.prototype.addDragging_ = function(node) {
   var that = this;
   this.draggableListener_ =
     google.maps.event.addDomListener(node, 'mousedown', function(e) {
-      that.startDrag(e);
+      if (e.button != 2) {
+        that.startDrag(e);
+      }
     });
 
   this.setCursor_('draggable');
